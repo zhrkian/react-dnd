@@ -387,7 +387,7 @@ export class HTML5BackendImpl implements Backend {
 			this.currentDragSourceNode = null
 
 			if (this.rootElement) {
-				this.window?.clearTimeout(this.mouseMoveTimeoutTimer || undefined)
+				if (this.window && this.window?.clearTimeout) this.window?.clearTimeout(this.mouseMoveTimeoutTimer || undefined)
 				this.rootElement.removeEventListener(
 					'mousemove',
 					this.endDragIfSourceWasRemovedFromDOM,
